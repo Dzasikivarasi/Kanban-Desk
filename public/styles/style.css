@@ -1,0 +1,436 @@
+/* Обнуление браузерных стилей */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-size: 100%;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+/* Настройка шрифта */
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Regular.woff2') format('woff2'),
+        url('../fonts/Roboto-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.container,
+.content_card h2,
+.content_modal,
+.modal-textarea {
+    font-family: Roboto, sans-serif;
+    color: #000;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.header h1 {
+    color: #FFF;
+    font-size: 28px;
+}
+
+.content_modal-header h3 {
+    font-size: 24px;
+}
+
+.footer p,
+.footer span {
+    color: #FFF;
+    line-height: 40px;
+}
+
+/* Общие стили */
+.container {
+    background: #0067A3;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.background-container {
+    padding: 10px 20px;
+    height: 60px;
+}
+
+/* Хэдер + Футер */
+
+.header,
+.header_login,
+.footer,
+.footer_tasks,
+.footer_user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_login {
+    gap: 8px;
+    cursor: pointer;
+}
+
+.footer_tasks {
+    gap: 35px;
+}
+
+/* Выпадающий список авторизации */
+.header_login {
+    position: relative;
+}
+
+.header_dropdown-list {
+    position: absolute;
+    padding: 28px 8px 8px;
+    background-color: #fff;
+    top: 110%;
+    left: -90%;
+    z-index: 5;
+    width: 135px;
+    height: 83px;
+    clip-path: polygon(0 20%, 45% 20%, 55% 0%, 65% 20%, 100% 20%, 100% 100%, 0 100%);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.header_dropdown-list-item {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.header_dropdown-list-item:hover {
+    text-decoration: underline;
+}
+
+/* Мэйн */
+.content {
+    position: relative;
+    background: #0079BF;
+    padding: 20px 20px 35px;
+    height: calc(100vh - 120px);
+}
+
+.content_cards-list {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+.content_card {
+    position: relative;
+    display: flex;
+    min-height: 100px;
+    max-height: calc(100vh - 175px);
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 25%;
+    min-width: 185px;
+    flex-direction: column;
+    align-self: flex-start;
+    border-radius: 10px;
+    background: #EBECF0;
+    padding: 12px;
+    justify-content: flex-start;
+    z-index: 2;
+}
+
+
+.content_card h2 {
+    flex-wrap: wrap;
+    width: 100%;
+    z-index: 2;
+    position: sticky;
+    top: 0;
+}
+
+
+.content_card h2::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: -5px;
+    width: 110%;
+    height: 45px;
+    background-color: #EBECF0;
+    z-index: -1;
+}
+
+.content_card-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+.content_card-tasks-item {
+    position: relative;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(169, 169, 169, 0.5);
+    border-radius: 5px;
+    background: #FFF;
+    padding: 5px 10px 5px 5px;
+    max-height: 5em;
+    overflow: hidden;
+    cursor: default;
+    transition: scale 0.2s ease;
+}
+
+.content_card-tasks-item:hover {
+    transform: scale(1.01);
+    cursor: pointer;
+}
+
+.task-delete {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    line-height: 60%;
+    background-color: #FFF;
+    color: #E1E2E5;
+    transition: scale 0.2s ease;
+}
+
+.task-delete:hover {
+    transform: scale(1.01);
+    color: #5E6C84;
+    cursor: pointer;
+}
+
+
+.content_card-tasks-empty {
+    font-size: 14px;
+    color: #5E6C84;
+}
+
+.card-btn {
+    display: flex;
+    align-items: baseline;
+    gap: 3px;
+    padding: 5px;
+    max-width: 110px;
+    border-radius: 5px;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.card-btn:hover {
+    cursor: pointer;
+}
+
+.add-btn {
+    background: #EBECF0;
+    color: #5E6C84
+}
+
+.add-btn:hover {
+    background: #FFF;
+}
+
+.add-btn:focus {
+    outline: none;
+}
+
+.submit-btn {
+    background: #0079BF;
+    color: #FFF;
+    justify-content: center;
+    width: 102px;
+}
+
+.submit-btn:hover {
+    background: #4394C3;
+}
+
+.card-btn:disabled {
+    background-color: #91a2ab;
+    cursor: not-allowed;
+}
+
+div.btn-plus {
+    align-self: center;
+    font-size: 27px;
+    line-height: 30%;
+}
+
+.new-task {
+    font-size: 14px;
+    color: #5E6C84;
+    border-radius: 5px;
+    padding: 5px;
+    height: 2.1em;
+    max-height: 5em;
+    width: 100%;
+}
+
+.new-task:focus {
+    outline: none;
+}
+
+/* Модальное окно */
+.content_modal {
+    z-index: 20;
+    top: 60px;
+    left: 20px;
+    background-color: #FFFFFF;
+    height: calc(100vh - 115px);
+    width: calc(100vw - 40px);
+    padding: 25px;
+    border-radius: 5px;
+}
+
+.content_modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+    gap: 20px;
+}
+
+.content_modal-description:hover {
+    cursor: pointer;
+}
+
+.content_modal-description,
+.modal-textarea {
+    max-width: 650px;
+}
+
+.modal-textarea-container {
+    display: flex;
+    gap: 5px;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.modal-cancel {
+    background-color: #FFF;
+    font-size: 30px;
+    line-height: 60%;
+    color: #5E6C84;
+}
+
+.modal-cancel:hover {
+    cursor: pointer;
+}
+
+.modal-textarea {
+    width: 100%;
+    border: solid 1px #EBECF0;
+    border-radius: 5px;
+    padding: 10px;
+    color: #5E6C84;
+    height: auto;
+    overflow-y: auto;
+    min-height: 10em;
+}
+
+.modal-textarea:focus {
+    outline: none;
+}
+
+.content_modal-header-close {
+    background-color: #FFF;
+}
+
+.content_modal-header-close:hover {
+    cursor: pointer;
+}
+
+.content_modal-header-close:focus {
+    outline: none;
+}
+
+@media screen and (max-width: 950px) {
+    .container {
+        overflow: auto;
+    }
+
+    .content {
+        height: auto;
+    }
+
+    .content_cards-list {
+        flex-wrap: wrap;
+    }
+
+    .content_card {
+        width: 100vw;
+        max-width: 530px;
+        min-width: 270px;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        background-color: #0079BF;
+    }
+
+    .footer_user {
+        display: none;
+    }
+
+    .footer p,
+    .footer span {
+        line-height: normal;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+
+    body,
+    .content_card h2 {
+        font-size: 14px;
+    }
+
+    .header,
+    .header_login {
+        justify-content: flex-end;
+    }
+
+    .header h1 {
+        display: none;
+    }
+
+    .content_card {
+        min-width: 220px;
+    }
+}
+
+@media screen and (max-width: 250px) {
+    .footer_tasks {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .footer {
+        justify-content: flex-start;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+} */
