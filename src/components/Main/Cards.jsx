@@ -47,8 +47,7 @@ export default function Cards({ tasks, STATUS_ITEMS, onCardTaskClick, updateTask
 
     // Отрисовка новой задачи, обновление массива tasks, закрытие инпута, обнуление активной кнопки AddButton
     const renderNewTask = (newTaskName) => {
-        const maxId = Math.max(...tasks.map(task => task.id));
-
+        const maxId = tasks.length > 0 ? Math.max(...tasks.map(task => task.id)) : 0;
         const newTask = {
             id: maxId + 1,
             task: newTaskName,
