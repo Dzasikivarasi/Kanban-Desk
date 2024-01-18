@@ -116,7 +116,7 @@ ul {
 .content {
     position: relative;
     background: #0079BF;
-    padding: 20px 20px 35px;
+    padding: 20px 22px 35px;
     height: calc(100vh - 120px);
 }
 
@@ -144,7 +144,6 @@ ul {
     justify-content: flex-start;
     z-index: 2;
 }
-
 
 .content_card h2 {
     flex-wrap: wrap;
@@ -284,10 +283,11 @@ div.btn-plus {
     top: 60px;
     left: 20px;
     background-color: #FFFFFF;
-    height: calc(100vh - 115px);
-    width: calc(100vw - 40px);
+    height: calc(100vh - 150px);
+    width: 100vw;
     padding: 25px;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
 .content_modal-header {
@@ -370,7 +370,6 @@ div.btn-plus {
         max-width: 530px;
         min-width: 270px;
     }
-
 }
 
 @media screen and (max-width: 600px) {
@@ -424,13 +423,3 @@ div.btn-plus {
 .hidden {
     display: none;
 }
-
-
-/* .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-} */
