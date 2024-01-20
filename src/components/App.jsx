@@ -27,6 +27,5 @@ export default function App() {
       <Main tasks={tasks} updateTasks={updateTasks} />
       <Footer tasks={tasks} />
     </Wrapper>
-
   );
 }

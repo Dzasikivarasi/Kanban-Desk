@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
+
 export default function Modal({ TASKS, isModalOpen, selectedTaskId, closeClickHandler, updateTaskDescription }) {
     const selectedTask = TASKS.find((item) => item.id === selectedTaskId);
     const [isEditing, setEditing] = useState(false);

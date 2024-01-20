@@ -15,7 +15,7 @@ export default function Main({ tasks, updateTasks }) {
 
     const onClickClose = () => {
         setModalOpen(false);
-        setSelectedTaskId(null);
+        setSelectedTaskId(null)
     }
 
 
@@ -25,11 +25,8 @@ export default function Main({ tasks, updateTasks }) {
             if (task.id === taskId) {
                 return {
                     ...task,
-                    // ...(newStatus !== undefined ? { status: newStatus } : {}),
-
-                    ...(newStatus && { status: newStatus } ),
-                    // ...(newDescription !== undefined ? { description: newDescription } : {}),
-                    ...(newDescription &&  { description: newDescription }),
+                    ...(newStatus && { status: newStatus }),
+                    ...(newDescription && { description: newDescription }),
                 };
             }
             return task;
@@ -47,7 +44,6 @@ export default function Main({ tasks, updateTasks }) {
                     updateTasksArray={updateTasks}
                     updateData={updateDataValue}
                 />
-
                 <Modal TASKS={tasks}
                     isModalOpen={isModalOpen}
                     selectedTaskId={selectedTaskId}
@@ -55,7 +51,6 @@ export default function Main({ tasks, updateTasks }) {
                     updateTaskDescription={updateDataValue}
                 />
             </div>
-
         </main >
     )
 }
