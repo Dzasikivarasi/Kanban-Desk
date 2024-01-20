@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
 
-export default function Modal({ TASKS, isModalOpen, selectedTaskId, closeClickHandler, updateTaskDescription }) {
-    const selectedTask = TASKS.find((item) => item.id === selectedTaskId);
+export default function Modal({ tasks, isModalOpen, selectedTaskId, closeClickHandler, updateTaskDescription }) {
+    const selectedTask = tasks.find((item) => item.id === selectedTaskId);
     const [isEditing, setEditing] = useState(false);
     const [editedDescription, setEditedDescription] = useState(isEditing ? selectedTask.description : "");
     const dialog = useRef();

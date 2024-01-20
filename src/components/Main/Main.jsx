@@ -44,7 +44,7 @@ export default function Main({ tasks, updateTasks }) {
                     updateTasksArray={updateTasks}
                     updateData={updateDataValue}
                 />
-                <Modal TASKS={tasks}
+                <Modal tasks={tasks}
                     isModalOpen={isModalOpen}
                     selectedTaskId={selectedTaskId}
                     closeClickHandler={onClickClose}
