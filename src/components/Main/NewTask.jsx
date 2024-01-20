@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { TASK_LENGTH } from "../../settings";
 
-export default function NewTask({ position, onNewTaskClick }) {
+export default function NewTask({ status, onNewTaskClick }) {
     const [newTaskName, setNewTaskName] = useState("");
 
     // Активируем компонент тольько для блока Backlog
-    if (position !== 'Backlog') {
+    if (status !== 'Backlog') {
         return null;
     }
 

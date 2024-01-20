@@ -78,7 +78,6 @@ export default function Modal({ TASKS, isModalOpen, selectedTaskId, closeClickHa
                     onDoubleClick={handleDescriptionClick}
                     className="content_modal-description">{selectedTask.description}</p>
             )}
-
         </dialog>,
         document.getElementById('modal')
     )

@@ -8,27 +8,27 @@ import { EMPTY_TASK_LIST_MESSAGE, EMPTY_DESCRIPTION_MESSAGE } from "../../settin
 export default function Cards({ tasks, STATUS_ITEMS, onCardTaskClick, updateTasksArray, updateData }) {
     const [isNewTaskInputActive, setNewTaskInputActive] = useState(false);
     const [isSelectInputActive, setSelectInputActive] = useState(false);
-    const [currentPosition, setCurrentPosition] = useState(null);
-    const isAddButtonVisible = (position) => currentPosition !== position;
-    const isSelectVisible = (position) => position !== 'Backlog' ? currentPosition === position : false;
+    const [currentStatus, setCurrentStatus] = useState(null);
+    const isAddButtonVisible = (status) => currentStatus !== status;
+    const isSelectVisible = (status) => status !== 'Backlog' ? currentStatus === status : false;
 
 
     // Логика работы кнопки AddButton
     // Управление атрибутом disabled
-    const getPreviousPosition = (position) => {
-        const positionIndex = STATUS_ITEMS.indexOf(position);
-        return positionIndex > 0 ? STATUS_ITEMS[positionIndex - 1] : null;
+    const getPreviousStatus = (status) => {
+        const statusIndex = STATUS_ITEMS.indexOf(status);
+        return statusIndex > 0 ? STATUS_ITEMS[statusIndex - 1] : null;
     };
 
-    const isAddButtonDisabled = (position) => {
-        const previousPosition = getPreviousPosition(position);
-        const tasksForPreviousPosition = tasks.filter(task => task.position === previousPosition);
-        return position !== 'Backlog' && tasksForPreviousPosition.length === 0;
+    const isAddButtonDisabled = (status) => {
+        const previousStatus = getPreviousStatus(status);
+        const tasksForPreviousStatus = tasks.filter(task => task.status === previousStatus);
+        return status !== 'Backlog' && tasksForPreviousStatus.length === 0;
     };
 
     // Управление видимостью кнопки
-    const hideAddButton = (position) => {
-        setCurrentPosition(position)
+    const hideAddButton = (status) => {
+        setCurrentStatus(status)
     }
 
 
@@ -52,19 +52,19 @@ export default function Cards({ tasks, STATUS_ITEMS, onCardTaskClick, updateTask
             id: maxId + 1,
             task: newTaskName,
             description: EMPTY_DESCRIPTION_MESSAGE,
-            position: "Backlog",
+            status: "Backlog",
         }
         const newTasks = [...tasks, newTask];
         updateTasksArray(newTasks);
         setNewTaskInputActive(false);
-        setCurrentPosition(null);
+        setCurrentStatus(null);
     }
 
-    // Обновление блока (position) задачи при переносе
-    const updateTaskPosition = (taskId, newPosition) => {
-        updateData(taskId, { newPosition: newPosition })
+    // Обновление блока (status) задачи при переносе
+    const updateTaskStatus = (taskId, newStatus) => {
+        updateData(taskId, { newStatus: newStatus })
         setSelectInputActive(false);
-        setCurrentPosition(null);
+        setCurrentStatus(null);
     }
 
     // Удаление задачи из списка
@@ -74,7 +74,7 @@ export default function Cards({ tasks, STATUS_ITEMS, onCardTaskClick, updateTask
     }
 
     // Управление состоянием селекта выбора существующих задач
-    const openTaskSelect = (position) => {
+    const openTaskSelect = (status) => {
         setSelectInputActive(true);
     }
 
@@ -82,17 +82,17 @@ export default function Cards({ tasks, STATUS_ITEMS, onCardTaskClick, updateTask
     const resetAllInputs = () => {
         setNewTaskInputActive(false)
         setSelectInputActive(false)
-        setCurrentPosition(null)
+        setCurrentStatus(null)
     }
 
-    const TasksList = STATUS_ITEMS.map((position) => {
-        const tasksForPosition = tasks.filter(task => task.position === position);
+    const TasksList = STATUS_ITEMS.map((status) => {
+        const tasksForStatus = tasks.filter(task => task.status === status);
         return (
-            <li className="content_card" key={position}>
-                <h2>{position}</h2>
+            <li className="content_card" key={status}>
+                <h2>{status}</h2>
                 <ul className="content_card-tasks">
-                    {tasksForPosition.length > 0 ? (
-                        tasksForPosition.map(({ id, task }) => (
+                    {tasksForStatus.length > 0 ? (
+                        tasksForStatus.map(({ id, task }) => (
                             <div key={id} className="content_card-tasks-item">
                                 <li onClick={() => handleCardTask(id)}>
                                     {task}
@@ -104,9 +104,9 @@ export default function Cards({ tasks, STATUS_ITEMS, onCardTaskClick, updateTask
                         <li className="content_card-tasks-empty">{EMPTY_TASK_LIST_MESSAGE}</li>
                     )}
 
-                    {isAddButtonVisible(position) && (
+                    {isAddButtonVisible(status) && (
                         <AddButton hideAddButton={hideAddButton}
-                            position={position}
+                            status={status}
                             openTypingInput={openNewTaskInput}
                             openSelectInput={openTaskSelect}
                             resetAllInputs={resetAllInputs}
@@ -114,16 +114,16 @@ export default function Cards({ tasks, STATUS_ITEMS, onCardTaskClick, updateTask
                         />
                     )}
                     {isNewTaskInputActive && (
-                        <NewTask position={position}
+                        <NewTask status={status}
                             onNewTaskClick={renderNewTask}
                         />
                     )}
-                    {isSelectInputActive && isSelectVisible(position) && (
+                    {isSelectInputActive && isSelectVisible(status) && (
                         <SelectTask
                             tasks={tasks}
                             STATUS_ITEMS={STATUS_ITEMS}
-                            currentPosition={currentPosition}
-                            updateTaskPosition={updateTaskPosition}
+                            currentStatus={currentStatus}
+                            updateTaskStatus={updateTaskStatus}
                         />
                     )}
                 </ul>

@@ -13,20 +13,23 @@ export default function Main({ tasks, updateTasks }) {
         setSelectedTaskId(id);
     }
 
-    const OnClickClose = () => {
+    const onClickClose = () => {
         setModalOpen(false);
         setSelectedTaskId(null);
     }
 
 
     // Обновление массива задач
-    const updateDataValue = (taskId, { newPosition, newDescription }) => {
+    const updateDataValue = (taskId, { newStatus, newDescription }) => {
         const updatedTasks = tasks.map(task => {
             if (task.id === taskId) {
                 return {
                     ...task,
-                    ...(newPosition !== undefined ? { position: newPosition } : {}),
-                    ...(newDescription !== undefined ? { description: newDescription } : {}),
+                    // ...(newStatus !== undefined ? { status: newStatus } : {}),
+
+                    ...(newStatus && { status: newStatus } ),
+                    // ...(newDescription !== undefined ? { description: newDescription } : {}),
+                    ...(newDescription &&  { description: newDescription }),
                 };
             }
             return task;
@@ -48,7 +51,7 @@ export default function Main({ tasks, updateTasks }) {
                 <Modal TASKS={tasks}
                     isModalOpen={isModalOpen}
                     selectedTaskId={selectedTaskId}
-                    closeClickHandler={OnClickClose}
+                    closeClickHandler={onClickClose}
                     updateTaskDescription={updateDataValue}
                 />
             </div>
