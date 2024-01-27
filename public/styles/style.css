@@ -50,7 +50,7 @@ ul {
 
 /* Общие стили */
 .container {
-    background: #0067A3;
+    background: #92A9FC;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -115,7 +115,7 @@ ul {
 /* Мэйн */
 .content {
     position: relative;
-    background: #0079BF;
+    background: #C8D7F8;
     padding: 20px 22px 35px;
     height: calc(100vh - 120px);
 }
@@ -139,7 +139,7 @@ ul {
     flex-direction: column;
     align-self: flex-start;
     border-radius: 10px;
-    background: #EBECF0;
+    background: #EBEDF3;
     padding: 12px;
     justify-content: flex-start;
     z-index: 2;
@@ -161,7 +161,7 @@ ul {
     left: -5px;
     width: 110%;
     height: 45px;
-    background-color: #EBECF0;
+    background-color: #EBEDF3;
     z-index: -1;
 }
 
@@ -229,7 +229,7 @@ ul {
 }
 
 .add-btn {
-    background: #EBECF0;
+    background: #EBEDF3;
     color: #5E6C84
 }
 
@@ -242,18 +242,18 @@ ul {
 }
 
 .submit-btn {
-    background: #0079BF;
+    background: #8D8DDE;
     color: #FFF;
     justify-content: center;
     width: 102px;
 }
 
 .submit-btn:hover {
-    background: #4394C3;
+    background: #92A9FC;
 }
 
 .card-btn:disabled {
-    background-color: #91a2ab;
+    background-color: #C4CACD;
     cursor: not-allowed;
 }
 
@@ -327,7 +327,7 @@ div.btn-plus {
 
 .modal-textarea {
     width: 100%;
-    border: solid 1px #EBECF0;
+    border: solid 1px #EBEDF3;
     border-radius: 5px;
     padding: 10px;
     color: #5E6C84;
@@ -374,7 +374,7 @@ div.btn-plus {
 
 @media screen and (max-width: 600px) {
     .container {
-        background-color: #0079BF;
+        background-color: #C8D7F8;
     }
 
     .footer_user {
